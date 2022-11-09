@@ -1,39 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputController
 {
-    private Vector2
-            _startedPos, // hareketin baþladýðý konum
-            _delta; // hareketin devam ettiði konum
+    private Vector2 startedPos, delta;
+    private Vector2 value;
+    private float maxDistance = 10f;
 
-    private Vector2 _value; // hareket sonucunda yansýtýlan deðer
+    private float countdown = 0;
+    private bool isCountdownStarted = false;
 
-    public Vector2 GetValue() // Bu fonksiyonumuz karakter hareketini yazdýðýmýz scriptten çaðýrýlacak ve hareket koduna dahil edilecek.
-    {
-        return _value;
-    }
-    public float maxDistance = 100f; // kullanýcýnýn hareketinin maksimum ne kadar olacaðý
+    public Vector2 Value { get => value; set => this.value = value; }
+    public float MaxDistance { get => maxDistance; set => maxDistance = value; }
+
+    public Action OnTap;
+
     public void CustomUpdate()
     {
         if (Input.GetMouseButtonDown(0))
-            _startedPos = (Vector2)Input.mousePosition; // baþlangýç konumunu alýyoruz
+        {
+            startedPos = (Vector2)Input.mousePosition;
+            isCountdownStarted = true;
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
-            // Deðerleri sýfýrlýyoruz hareket bittiði zaman
-            _delta = Vector2.zero;
-            _startedPos = Vector2.zero;
-            _value = Vector2.zero;
+           
+            delta = Vector2.zero;
+            startedPos = Vector2.zero;
+            value = Vector2.zero;
+
+            if (countdown < 0.15f)
+                OnTap?.Invoke();
+            countdown = 0;
+            isCountdownStarted = false;
         }
 
-        if (!Input.GetMouseButton(0)) return; // hareket ediyorsa hesaplamalarý yapýyoruz
-        _delta = (Vector2)Input.mousePosition - _startedPos;
-        _delta.x = Mathf.Clamp(_delta.x, -maxDistance, maxDistance);
-        _delta.y = Mathf.Clamp(_delta.y, -maxDistance, maxDistance);
+        if (!Input.GetMouseButton(0)) return;
+        delta = (Vector2)Input.mousePosition - startedPos;
+        delta.x = Mathf.Clamp(delta.x, -maxDistance, maxDistance);
+        delta.y = Mathf.Clamp(delta.y, -maxDistance, maxDistance);
 
-        _value = _delta / maxDistance;
-        _startedPos = (Vector2)Input.mousePosition;
+        value = delta / maxDistance;
+        startedPos = (Vector2)Input.mousePosition;
+
+        if(isCountdownStarted)
+        {
+            countdown += Time.deltaTime;
+        }
     }
 }

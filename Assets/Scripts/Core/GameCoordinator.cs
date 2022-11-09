@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +5,11 @@ using UnityEngine;
 public class GameCoordinator : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] LevelController levelController;
     public void Initialize()
     {
         playerController.Initialize();
+        levelController.Initialize();
 
     }
     public void StartGame()
@@ -18,6 +19,7 @@ public class GameCoordinator : MonoBehaviour
     public void Reload()
     {
         playerController.Reload();
+        levelController.Reload();
     }
 
     public void GameSuccess()

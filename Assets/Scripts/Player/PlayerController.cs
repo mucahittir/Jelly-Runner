@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     {
         player.Initialize();
         inputController = new InputController();
+        inputController.OnTap = onTap;
     }
 
     public void StartGame()
@@ -34,11 +35,15 @@ public class PlayerController : MonoBehaviour
         player.GameSuccess();
     }
 
+    private void onTap()
+    {
+        player.ChangeMode();
+    }
+
     private void Update()
     {
         inputController.CustomUpdate();
-
-        player.Movement(inputController.GetValue().x);
+        player.Movement(inputController.Value.x);
     }
 
 }
