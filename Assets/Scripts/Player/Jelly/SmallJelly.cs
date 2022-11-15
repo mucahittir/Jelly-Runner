@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class SmallJelly : Jelly
 {
+    [SerializeField] Animator myAnimator;
 
+    public Animator MyAnimator { get => myAnimator; set => myAnimator = value; }
 }

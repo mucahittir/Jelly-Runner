@@ -9,6 +9,7 @@ public class PlayerAgent : MonoBehaviour
     [SerializeField] GameObject oneBigObj, manySmallObj ,trailObj ;
     [SerializeField] int startingCount;
     [SerializeField] BigJelly bigJelly;
+    [SerializeField] Animator animator;
 
     bool canChangeMode, isTapped, isGettingSmall;
     Vector3 moveDir;
@@ -25,11 +26,13 @@ public class PlayerAgent : MonoBehaviour
         bigJelly.OnFinish = finish;
         bigJelly.OnAdd = add;
         fulfillJellies();
-        setBigMode();
+        resizeBigJelly();
         toggleTrail(false);
+        animator.Play("Idle");
     }
     public void StartGame()
     {
+        animator.Play("Running");
         canChangeMode = true;
     }
 
@@ -37,22 +40,27 @@ public class PlayerAgent : MonoBehaviour
     {
         emptyJellies();
         fulfillJellies();
+        resizeBigJelly();
         transform.position = Vector3.zero;
         canChangeMode = false;
         isTapped = false;
         isGettingSmall = false;
         toggleTrail(false);
+        bigJelly.gameObject.SetActive(true);
+        animator.Play("Idle");
     }
 
     public void GameOver()
     {
         canChangeMode = false;
+        bigJelly.gameObject.SetActive(true);
 
     }
     public void GameSuccess()
     {
         canChangeMode = false;
         StopCoroutine(bigGetSmaller);
+        bigJelly.gameObject.SetActive(true);
     }
     public void Movement(float inputX)
     {
@@ -173,6 +181,7 @@ public class PlayerAgent : MonoBehaviour
                 isTapped = false;
 
             });
+        animator.Play("Running");
     }
 
     private void damage()
@@ -180,8 +189,14 @@ public class PlayerAgent : MonoBehaviour
         SmallJelly jelly = smallJellies[0];
         jelly.OnDamage -= damage;
         smallJellies.Remove(jelly);
+        PoolManager.Instance.SetActiveItemWithPosition("Damage",jelly.transform.position);
         jelly.Dismiss();
         resizeBigJelly();
+
+        if(smallJellies.Count <=0)
+        {
+            GameManager.Instance.GameOver();
+        }
 
     }
 
@@ -215,6 +230,9 @@ public class PlayerAgent : MonoBehaviour
             smallJelly.gameObject.SetActive(false);
             resizeBigJelly();
         }
+
+        PoolManager.Instance.SetActiveItemWithPosition("Smile", transform.position);
+
     }
 
     private void jump()
@@ -228,12 +246,6 @@ public class PlayerAgent : MonoBehaviour
                 });
         }
 
-        /*float currentYLevel = transform.position.y;
-        transform.DOJump(new Vector3(transform.position.x, currentYLevel+5f, transform.position.z+10f), 5, 1, 1f)
-        .OnComplete(() =>
-        {
-            transform.DOJump(transform.position + new Vector3(transform.position.x, currentYLevel, transform.position.z + 10f), 10, 1, 1f);
-        });*/
     }
 
     private void toggleTrail(bool isActive)

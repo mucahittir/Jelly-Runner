@@ -12,6 +12,7 @@ public class Coin : Collectible
     {
         COMMONS.SCORE += Value;
         UIManager.Instance.UpdateUIElements();
+        PoolManager.Instance.SetActiveItemWithPosition("Poof", this.transform.position);
         this.Dismiss();
     }
 }

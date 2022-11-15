@@ -170,6 +170,36 @@ MonoBehaviour:
   poolTag: Knife
   objectToPool: {fileID: 623177545946325747, guid: c6eea6a3669f3d84dba05280188dc9c8, type: 3}
   amount: 4
+--- !u!1 &22031643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4553437196255463377, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
+  m_PrefabInstance: {fileID: 371860739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &22031645
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22031643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b37ce65fb5aa1eb4785e9eedd0d86467, type: 3}
+  m_Controller: {fileID: 9100000, guid: 53191aaaf4ca2a24688199a201df1b39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &86972358 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5532086001407754439, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
+  m_PrefabInstance: {fileID: 371860739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &88841165
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +603,9 @@ Transform:
   - {fileID: 258271913}
   - {fileID: 637721964}
   - {fileID: 1238879744}
+  - {fileID: 1792989352}
+  - {fileID: 1043118434}
+  - {fileID: 1434571485}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -583,6 +616,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139092738}
     m_Modifications:
+    - target: {fileID: 981344279, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3201318851847373298, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -631,7 +668,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigJelly
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6941123929745494684, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 981344279, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbf07bf37b9a43b458ac7c6ecc5c3fd9, type: 3}
 --- !u!1 &383032118
 GameObject:
@@ -1634,6 +1676,53 @@ MonoBehaviour:
   poolTag: CollectibleJelly
   objectToPool: {fileID: 644550327733567441, guid: a807f4477d6ec49449f11d942f41a9cb, type: 3}
   amount: 4
+--- !u!1 &1043118433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043118434}
+  - component: {fileID: 1043118435}
+  m_Layer: 0
+  m_Name: DamagePD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1043118434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043118433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 288410806}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1043118435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043118433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ef3c69feaec644c8cf347e5c15fabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: Damage
+  objectToPool: {fileID: 2905334956122603440, guid: fc4e0a48caa6bd445893b47d87e48b30, type: 3}
+  amount: 4
 --- !u!1 &1238879743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1816,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolTag: SmallJelly
   objectToPool: {fileID: 6576195403308787383, guid: 7c42bf73cbd0002448598264dcc67479, type: 3}
+  amount: 4
+--- !u!1 &1434571484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434571485}
+  - component: {fileID: 1434571486}
+  m_Layer: 0
+  m_Name: SmilePD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1434571485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434571484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 288410806}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1434571486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434571484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ef3c69feaec644c8cf347e5c15fabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: Smile
+  objectToPool: {fileID: 788633060593137010, guid: 9b82614707065c84fa7e0e6762a91630, type: 3}
   amount: 4
 --- !u!1 &1605917839
 GameObject:
@@ -2104,6 +2240,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792989351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792989352}
+  - component: {fileID: 1792989353}
+  m_Layer: 0
+  m_Name: PoofPD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1792989352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792989351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 288410806}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792989353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792989351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ef3c69feaec644c8cf347e5c15fabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: Poof
+  objectToPool: {fileID: 6866124991864580616, guid: 66624802a1cd0504998c1f57c6f35966, type: 3}
+  amount: 4
 --- !u!1 &1816984350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2325,7 @@ MonoBehaviour:
   trailObj: {fileID: 712862600}
   startingCount: 5
   bigJelly: {fileID: 784443134}
+  animator: {fileID: 86972358}
 --- !u!4 &1816984352
 Transform:
   m_ObjectHideFlags: 0
