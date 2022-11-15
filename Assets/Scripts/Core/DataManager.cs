@@ -39,3 +39,11 @@ public class DataManager : CoreObj<DataManager>
         PlayerPrefs.SetInt("Money", money);
     }
 }
+public static class COMMONS
+{
+    public static int SCORE = 0;
+    public static void ResetValues()
+    {
+        SCORE = 0;
+    }
+}

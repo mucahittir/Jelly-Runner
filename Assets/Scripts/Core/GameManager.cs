@@ -10,6 +10,8 @@ public class GameManager : CoreObj<GameManager>
     {
         setIdleState();
         gameCoordinator.Initialize();
+
+        UIManager.Instance.UpdateUIElements();
     }
 
     public void StartGame()
@@ -22,6 +24,8 @@ public class GameManager : CoreObj<GameManager>
     {
         setIdleState();
         gameCoordinator.Reload();
+        resetStatics();
+        UIManager.Instance.UpdateUIElements();
     }
 
     public void GameOver()
@@ -46,25 +50,30 @@ public class GameManager : CoreObj<GameManager>
     private void setIdleState()
     {
         gameState = GameState.Idle;
-        ViewManager.Instance.OpenUIClean("IdleScreen");
+        UIManager.Instance.OpenUIClean("IdleScreen");
     }
 
     private void setInGameState()
     {
         gameState = GameState.InGame;
-        ViewManager.Instance.OpenUIClean("GameplayScreen");
+        UIManager.Instance.OpenUIClean("GameplayScreen");
     }
 
     private void setGameOverState()
     {
         gameState = GameState.GameOver;
-        ViewManager.Instance.OpenUIClean("FailScreen");
+        UIManager.Instance.OpenUIClean("FailScreen");
     }
     private void setGameSuccessState()
     {
 
         gameState = GameState.GameOver;
-        ViewManager.Instance.OpenUIClean("SuccessScreen");
+        UIManager.Instance.OpenUIClean("SuccessScreen");
+    }
+
+    private void resetStatics()
+    {
+        COMMONS.ResetValues();
     }
 }
 public enum GameState : int

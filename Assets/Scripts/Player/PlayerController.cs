@@ -8,16 +8,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerAgent player;
     InputController inputController;
 
+    bool isActive;
+
     public void Initialize()
     {
         player.Initialize();
         inputController = new InputController();
         inputController.OnTap = onTap;
+        isActive = false;
     }
 
     public void StartGame()
     {
         player.StartGame();
+        isActive = true;
     }
 
     public void Reload()
@@ -28,11 +32,13 @@ public class PlayerController : MonoBehaviour
     public void GameOver()
     {
         player.GameOver();
+        isActive = false;
     }
 
     public void GameSuccess()
     {
         player.GameSuccess();
+        isActive = false;
     }
 
     private void onTap()
@@ -42,8 +48,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        inputController.CustomUpdate();
-        player.Movement(inputController.Value.x);
+        if(isActive)
+        {
+            inputController.CustomUpdate();
+            player.Movement(inputController.Value.x);
+        }
     }
 
 }
